@@ -5,9 +5,4 @@
 examples/
 npmignore-list
 test/
-data/migrations
-data/*.csv
-data/MD5SUM
-data/Makefile
-data/*.mjs
 CHANGELOG.md
