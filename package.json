@@ -1,6 +1,6 @@
 {
   "name": "mysql-client-w-metrics",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Custom MySQL/MariaDB client with prometheus metrics embeded",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
