@@ -1,17 +1,35 @@
 import mysql from 'mysql2';
-import uniqid from 'uniqid';
 import { Counter, Gauge, register } from 'prom-client';
+let instanceCreated = 0;
+
+/**
+ * @typedef PoolIdObject
+ * @type {object}
+ * @property {string?} prefix
+ * @property {string?} value
+ * @property {string?} suffix
+ */
 
 class MySQLClientWMetrics {
   /**
    *
    * @param {import('mysql2').PoolOptions} poolOptions
-   * @param {string?} poolId
+   * @param {string|PoolIdObject} [poolId]
    */
   constructor (poolOptions, poolId) {
+    instanceCreated += 1;
+
     if (!poolId) {
-      poolId = uniqid();
+      poolId = instanceCreated.toString();
+    } else if (typeof poolId !== 'string') {
+      poolId = [
+        poolId.prefix,
+        poolId.value || instanceCreated.toString(),
+        poolId.suffix
+      ].filter((item) => item).join('-');
     }
+    this.poolId = instanceCreated.toString();
+
     /**
      * @type {import('mysql2').PoolOptions}
      */

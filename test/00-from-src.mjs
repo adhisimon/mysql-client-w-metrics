@@ -26,8 +26,7 @@ describe('#import from src directly', () => {
         port: Number(MYSQL_PORT),
         user: MYSQL_USER,
         password: MYSQL_PASSWORD
-      },
-      'TEST'
+      }
     );
   });
 
@@ -42,7 +41,7 @@ describe('#import from src directly', () => {
     const metrics = await client.metrics();
 
     should.ok(
-      metrics.search(/^mysql_pool_acquire_connection{pool_id="TEST"} 1/),
+      metrics.search(/^mysql_pool_acquire_connection{pool_id="1"} 1/),
       'metrics should have this line [F72B5986]'
     );
   });
