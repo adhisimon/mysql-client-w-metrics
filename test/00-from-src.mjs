@@ -19,13 +19,16 @@ let client;
 
 describe('#import from src directly', () => {
   before(() => {
-    client = new MySQLClientWMetrics({
-      host: MYSQL_HOST,
-      database: MYSQL_DATABASE,
-      port: Number(MYSQL_PORT),
-      user: MYSQL_USER,
-      password: MYSQL_PASSWORD
-    });
+    client = new MySQLClientWMetrics(
+      {
+        host: MYSQL_HOST,
+        database: MYSQL_DATABASE,
+        port: Number(MYSQL_PORT),
+        user: MYSQL_USER,
+        password: MYSQL_PASSWORD
+      },
+      'TEST'
+    );
   });
 
   after(() => {
@@ -35,5 +38,12 @@ describe('#import from src directly', () => {
   it('should behave correctly', async () => {
     should.exists(client, 'client should exists [80557CD2]');
     should.ok(await client.isConnected(), 'client shoud be connected [A7E1F316]');
+
+    const metrics = await client.metrics();
+
+    should.ok(
+      metrics.search(/^mysql_pool_acquire_connection{pool_id="TEST"} 1/),
+      'metrics should have this line [F72B5986]'
+    );
   });
 });
