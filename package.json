@@ -5,7 +5,7 @@
   "type": "module",
   "module": "src/index.mjs",
   "scripts": {
-    "postversion": "npm run build && git push && git push --tags",
+    "postversion": "git push && git push --tags",
     "version": "auto-changelog -p && git add CHANGELOG.md",
     "test": "mocha --bail --recursive test",
     "test-watch": "mocha --watch --bail --recursive test"
