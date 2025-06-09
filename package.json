@@ -4,6 +4,8 @@
   "description": "Custom MySQL/MariaDB client with prometheus metrics embeded",
   "main": "index.js",
   "scripts": {
+    "postversion": "git push && git push --tags",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
