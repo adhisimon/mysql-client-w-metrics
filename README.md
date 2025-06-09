@@ -8,3 +8,6 @@ Custom MySQL/MariaDB client with prometheus metrics embeded.
 **WORK IN PROGRESS (WIP). THIS MODULE IS AT INITIAL DEVELOPMENT**
 
 Please don't use this module at the moment.
+
+## Changelog
+See [CHANGELOG.md](./CHANGELOG.md).
