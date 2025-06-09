@@ -9,5 +9,10 @@ Custom MySQL/MariaDB client with prometheus metrics embeded.
 
 Please don't use this module at the moment.
 
+## How to install
+```shell
+npm i mysql-client-w-metrics
+```
+
 ## Changelog
 See [CHANGELOG.md](./CHANGELOG.md).
