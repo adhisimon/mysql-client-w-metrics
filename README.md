@@ -14,5 +14,8 @@ Please don't use this module at the moment.
 npm i mysql-client-w-metrics
 ```
 
+## How to use
+**WIP**
+
 ## Changelog
 See [CHANGELOG.md](./CHANGELOG.md).
