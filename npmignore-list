@@ -1,0 +1,13 @@
+
+# please do not delete empty blank line above
+.github/
+.vscode/
+examples/
+npmignore-list
+test/
+data/migrations
+data/*.csv
+data/MD5SUM
+data/Makefile
+data/*.mjs
+CHANGELOG.md

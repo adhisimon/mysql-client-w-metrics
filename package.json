@@ -7,7 +7,7 @@
   "exports": "./src/index.mjs",
   "scripts": {
     "postversion": "git push && git push --tags",
-    "version": "auto-changelog -p && git add CHANGELOG.md",
+    "version": "auto-changelog -p && git add CHANGELOG.md; cat .gitignore npmignore-list > .npmignore; git add .npmignore",
     "test": "mocha --bail --recursive test",
     "test-watch": "mocha --watch --bail --recursive test"
   },
