@@ -2,9 +2,19 @@
   "name": "mysql-client-w-metrics",
   "version": "0.0.1",
   "description": "Custom MySQL/MariaDB client with prometheus metrics embeded",
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
   "scripts": {
-    "postversion": "git push && git push --tags",
+    "build:esm": "rm -rvf dist/esm && babel src --out-dir dist/esm --extensions \".js\"",
+    "build:cjs": "rm -rvf dist/cjs && babel src --out-dir dist/cjs --extensions \".js\" --plugins @babel/plugin-transform-modules-commonjs",
+    "build": "npm run build:esm && npm run build:cjs",
+    "postversion": "npm run build && git push && git push --tags",
     "version": "auto-changelog -p && git add CHANGELOG.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,7 +33,12 @@
   },
   "homepage": "https://github.com/adhisimon/mysql-client-w-metrics#readme",
   "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
     "auto-changelog": "^2.5.0",
+    "babel-dual-package": "^1.1.4",
     "semistandard": "^17.0.0"
   },
   "dependencies": {
